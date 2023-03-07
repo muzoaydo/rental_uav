@@ -2,8 +2,9 @@
 
 - Python 3.10.2
 - Django
+- Django Cors Headers
+- Django Rest Framework
 - PostgreSQL
-- Rest Framework
 - Docker
 - Docker-compose
 
