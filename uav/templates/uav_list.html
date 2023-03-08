@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card-body">
+    <h4>UAV List</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Model</th>
+                <th scope="col">Weight</th>
+                <th scope="col">Category</th>
+                <th scope="col">Rented</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for uav in uavs %}
+            <tr>
+                <td>{{ uav.id }}</td>
+                <td>{{ uav.brand }}</td>
+                <td>{{ uav.model }}</td>
+                <td>{{ uav.weight }}</td>
+                <td>{{ uav.category }}</td>
+                <td>{{ uav.rented }}</td>
+                <td><a type="button" class="btn btn-warning" href="/uav_update/{{ uav.id }}">Update</a>
+                    <a type="button" class="btn btn-danger" href="/uav_delete/{{ uav.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a type="button" class="btn btn-success" href="{%url 'uav_create' %}">Create</a>
+</div>
+{% endblock %}
