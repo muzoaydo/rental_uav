@@ -3,14 +3,36 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+<div class="card">
+  <div style="color: white; background-color: #303f9f;" class="card-header">
+    <h5 class="card-title">
+          <a style="color: white;" href="/">Home</a>
+          <b style="color: brown;"> | </b>
+          <a style="color: white;" href="/rentUAV">Rent UAV</a>
+          <b style="color: brown;"> | </b>
+          <a style="color: white;" href="/uavApi">UAV API</a>
+          <b style="color: brown;"> | </b>
+          <a style="color: white;" href="/uav_create">Register UAV</a>
+          {% if user.is_authenticated %}
+          <a style="color: white; float: right;" href="accounts/logout">Logout</a>
+          {% else %}
+          <a style="color: white; float: right;" href="accounts/login">Login</a>
+          {% endif %}
+        </h5>
+      </div>
+    </div>
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!
+Hi {{ user.username }}!
+<h5>
   <p><a href="{% url 'logout' %}">Log Out</a></p>
-  <a href="{% url 'uav_api' %}">Click for UAV API (REST Framework)</a>
-  <a href="{% url 'uav_list' %}">Click for hire a UAV</a>
-  
+  <p><a href="{% url 'uav_api' %}">Click for UAV API (REST Framework)</a></p>
+  <p><a href="{% url 'uav_list' %}">Click to rent a UAV</a></p>
+  <p><a href="/uavAPI">Click to register a UAV</a></p>
+</h5>
+
 {% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a>
+
+<p></p>
+<h4>You are not logged in. You can either login and hire or register a UAV or you can just check out our UAV's from Rent UAV tab</h4>
 {% endif %}
 {% endblock %}

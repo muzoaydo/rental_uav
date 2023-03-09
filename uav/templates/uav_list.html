@@ -8,9 +8,11 @@
                 <h5 class="card-title">
                     <a style="color: white;" href="/">Home</a>
                     <b style="color: brown;"> | </b>
-                    <a style="color: white;" href="/hireUAV">Hire UAV</a>
+                    <a style="color: white;" href="/rentUAV">Rent UAV</a>
                     <b style="color: brown;"> | </b>
-                    <a style="color: white;" href="/uavApi">UAV API</a>
+                    <a style="color: white;" href="/uavApi">UAV API</a>                    
+                    <b style="color: brown;"> | </b>
+                    <a style="color: white;" href="/uav_create">Register UAV</a>
                 </h5>
             </div>
         </div>
@@ -58,6 +60,7 @@
                 <th scope="col">Weight</th>
                 <th scope="col">Category</th>
                 <th scope="col">Rented</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -69,14 +72,28 @@
                 <td>{{ uav.weight }}</td>
                 <td>{{ uav.category }}</td>
                 <td>{{ uav.rented }}</td>
-                <td><a type="button" class="btn btn-warning" href="/uav_update/{{ uav.id }}">Update</a>
-                    <a type="button" class="btn btn-danger" href="/uav_delete/{{ uav.id }}">Delete</a>
+                <td>
+                    <div class="row">
+                        <a type="button" class="btn btn-warning" style="height: min-content; margin-right: 10px;" href="/uav_update/{{ uav.id }}">Update</a>
+                        <a type="button" class="btn btn-danger"style="height: min-content;margin-right: 10px;" href="/uav_delete/{{ uav.id }}">Delete</a>
+                        {% if not uav.rented %}
+                        <form method="post" action="{% url 'uav_rent' uav.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{ uav.id }}">
+                            {% if user.is_authenticated %}
+                            <button type="submit" class="btn btn-success">Rent</button>
+                            {% else %}
+                            <b>Login To Rent</b>
+                            {% endif %}
+                        </form>
+                        {% endif %}
+                    </div>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    <a type="button" class="btn btn-success" href="{%url 'uav_create' %}">Create</a>
+
 </div>
 
 
