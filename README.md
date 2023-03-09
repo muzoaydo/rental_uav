@@ -1,3 +1,4 @@
+# Rental UAV
 
 
 # Introduction
@@ -42,7 +43,6 @@ And then:
       
 After that just install the local dependencies, run migrations, and start the server.
 
-# Rental UAV
 
 # Getting Started
 
