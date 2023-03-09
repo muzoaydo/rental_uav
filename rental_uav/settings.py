@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'uav.apps.UavConfig'
+    'uav.apps.UavConfig',
+    'django_filters'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True

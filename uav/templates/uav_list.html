@@ -1,5 +1,52 @@
 {% extends "base.html" %}
 {% block content %}
+
+<div class="card">
+    <div style="color: white; background-color: #303f9f;" class="card-header">
+        <div class="row">
+            <div class="col col-md-6">
+                <h5 class="card-title">
+                    <a style="color: white;" href="/">Home</a>
+                    <b style="color: brown;"> | </b>
+                    <a style="color: white;" href="/hireUAV">Hire UAV</a>
+                    <b style="color: brown;"> | </b>
+                    <a style="color: white;" href="/uavApi">UAV API</a>
+                </h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-header">
+    <form method="get">
+        <div class="row">
+            <div class="input-group mb-3 col col-md-2">
+                <input name="brand" type="text" class="form-control" placeholder="Brand">
+            </div>
+            <div class="input-group mb-3 col col-md-2">
+                <input name="model" type="text" class="form-control" placeholder="Model">
+            </div>
+            <div class="input-group mb-3 col col-md-2">
+                <input name="weight" type="text" class="form-control" placeholder="Weight">
+            </div>
+            <div class="input-group mb-3 col col-md-2">
+                <input name="category" type="text" class="form-control" placeholder="Category">
+            </div>
+            <div class="input-group mb-3 col col-md-1">
+                <select name="rented" class="custom-select">
+                    <option value="" hidden selected>Is Rented ?</option>
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                </select>
+            </div>
+            <div class="input-group mb-3 col col-md-1">
+                <button class="btn btn-sm btn-success" type="submit">Filter</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
 <div class="card-body">
     <h4>UAV List</h4>
     <table class="table">
@@ -31,4 +78,6 @@
     </table>
     <a type="button" class="btn btn-success" href="{%url 'uav_create' %}">Create</a>
 </div>
+
+
 {% endblock %}
