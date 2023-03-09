@@ -55,6 +55,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
+
+
 ROOT_URLCONF = 'rental_uav.urls'
 LOGOUT_REDIRECT_URL = "home" 
 LOGIN_REDIRECT_URL = "home"
