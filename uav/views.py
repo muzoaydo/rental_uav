@@ -5,7 +5,6 @@ from .serializers import UAVForm, UAVSerializer
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework import filters, mixins, viewsets
 import django_filters.rest_framework
-from .filters import ListingFilter
 from django.contrib.auth.decorators import login_required
 
 
