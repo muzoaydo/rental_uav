@@ -6,6 +6,8 @@
 {% if user.is_authenticated %}
   Hi {{ user.username }}!
   <p><a href="{% url 'logout' %}">Log Out</a></p>
+  <a href="{% url 'uav_api' %}">Click for UAV API (REST Framework)</a>
+  <a href="{% url 'uav_list' %}">Click for hire a UAV</a>
   
 {% else %}
   <p>You are not logged in</p>
