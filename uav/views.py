@@ -1,11 +1,9 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from rest_framework import generics
 from .models import UAV
 from .serializers import UAVForm, UAVSerializer
-from rest_framework.permissions import IsAdminUser, IsAuthenticated
-from rest_framework import filters, mixins, viewsets
-import django_filters.rest_framework
 from django.contrib.auth.decorators import login_required
+from rest_framework.permissions import IsAdminUser
+from rest_framework import generics
 
 
 # UAV ListingAPI REST framework page view
@@ -48,6 +46,8 @@ def uavList(request):
         print(e)
 
     return render(request, 'uav_list.html', {'uavs': uavs})
+
+# UAV Create Page View
 @login_required
 def uavCreate(request):  
     if request.method == "POST":  
@@ -63,6 +63,7 @@ def uavCreate(request):
         form = UAVForm()  
     return render(request,'uav_create.html',{'form':form})  
 
+# UAV Update Page View
 @login_required
 def uavUpdate(request, id):  
     uav = UAV.objects.get(id=id)
@@ -78,6 +79,7 @@ def uavUpdate(request, id):
                 pass    
     return render(request,'uav_update.html',{'form':form})
 
+# UAV Rent Page View
 @login_required
 def uavRent(request, id):
     uav = get_object_or_404(UAV, id=id)  # Get the UAV object with the given ID
@@ -86,6 +88,7 @@ def uavRent(request, id):
         uav.save()  # Save the changes to the database
     return redirect('/rentUAV')
 
+# UAV Delete Page View
 @login_required
 def uavDelete(request, id):
     uav = UAV.objects.get(id=id)
